@@ -1,0 +1,500 @@
+@import "normalize";
+@import "bourbon/bourbon";
+@import "grid-settings";
+@import "neat/neat";
+@import "animate";
+@import "fonts";
+
+/* ------------------------------------------------ *\
+
+	# SMACSS
+	1. Base
+	2. Layout
+	3. Module
+	4. State
+	5. Theme
+
+\* ------------------------------------------------ */
+
+/* ------------------------ *\
+	Base
+\* ------------------------ */
+
+	// Variables
+
+	$hand: "skippy-sharp";
+	$sans: "ff-good-headline-web-pro-con";
+	$script: "bistro-script-web";
+	$slab: "grandma";
+
+	$gray: #444444;
+	$light-gray: lighten(#D4D4D4, 8%);
+	$dark-gray: #222222;
+	$background: #f0f0f0;
+
+	$scale: 1.5;
+	$base: 42px;
+	$pad: modular-scale($base, -1, $scale);
+
+	// Basic Styles
+
+	body {
+		margin: 0;
+		background: $background;
+		color: $gray;
+		font-size: modular-scale($base, 0, $scale);
+		font-family: $helvetica;
+		line-height: 1.25em;
+		-webkit-font-smoothing: subpixel-antialiased;
+	}
+
+	section {
+		position: relative;
+		margin: 0 0;
+		padding: 2em 0;
+		&:first-child {
+			padding-top: 4em;
+		}
+		&:last-child {
+			margin-top: 4em;
+		}
+		&:nth-child(2n) {
+			background: darken($background, 2%);
+		}
+	}
+
+	a {
+		@include transition-duration(0.2s);
+		border-bottom: solid 1px darken($light-gray, 20%);
+		color: inherit;
+		text-decoration: none;
+		&:hover {
+			color: $light-gray;
+		}
+	}
+
+	img {
+		margin: 0.5em auto;
+		max-width: 100%;
+	}
+
+	i {
+		@include span-columns(1);
+		font-style: normal;
+		text-align: center;
+  }
+
+/* ------------------------ *\
+	Layout
+\* ------------------------ */
+
+	.container {
+		@include outer-container;
+		text-transform: uppercase;
+		span {
+			display: inline-block;
+			margin: 0 0 $pad 0;
+		}
+	}
+
+	.col10 {
+  	@include span-columns(10);
+  	margin-bottom: 0 !important;
+  }
+
+  .invisible {
+  	opacity: 0;
+  }
+
+  .center {
+  	text-align: center;
+  	display: block !important;
+  }
+
+  .hand {
+		font-family: $hand;
+	}
+
+	.sans {
+		font-size: modular-scale($base, 2, $scale);
+		font-family: $sans;
+		line-height: 1em;
+		sup {
+			vertical-align: top;
+			letter-spacing: 2px;
+			font-weight: 900;
+			font-size: 0.38em;
+			line-height: 1.8em;
+		}
+	}
+
+	.script {
+		display: inline !important;
+		text-transform: lowercase;
+		font-weight: 600;
+		font-family: $script;
+	}
+
+	.slab {
+		font-family: $slab;
+		font-weight: bold;
+		line-height: 1em;
+	}
+
+  .crush {
+		line-height: 0 !important;
+  }
+
+  .transparent {
+  	opacity: 0;
+  }
+
+/* ------------------------ *\
+	Module
+\* ------------------------ */
+
+	.section-break {
+		hr {
+			@include span-columns(9);
+			top: 0.5em;
+			height: 0.1em;
+			border: none;
+			background: $gray;
+			&.full {
+				width: 100%;
+			}
+		}
+		i {
+			font-size: 120%;
+  	}
+	}
+
+	// II - Frame Grid
+
+	ul.people {
+		display: block;
+		overflow: auto;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		li {
+			float: left;
+			margin: 1em 5%;
+			width: 10%;
+			text-align: center;
+			i {
+				position: relative;
+				left: 50%;
+				margin: 0 0 0 -0.75em;
+				padding: 0.25em;
+				width: 1.5em;
+				height: 1.5em;
+				background: rgba(white, 0.6);
+				box-shadow: inset 0 0 0 2px $light-gray,
+										inset 0 0 0 4px white,
+										inset 0 0 0 6px $light-gray;
+				color: rgba($light-gray, 0.6);
+				font-size: 150%;
+			}
+		}
+		&.medium {
+			overflow: visible;
+			padding: 1.5em 10%;
+			li {
+				margin: 1em 5%;
+				width: 15%;
+				i {
+					font-size: 200%;
+				}
+			}
+		}
+		&.large {
+			overflow: visible;
+			padding: 3em 0;
+			li {
+				margin: 1em 1%;
+				width: 18%;
+				i {
+					font-size: 300%;
+				}
+			}
+		}
+	}
+
+	.absolute {
+  	position: absolute;
+  	top: 6.5em;
+  	width: 100%;
+  }
+
+	.cW {
+		-webkit-transform: rotate(3deg);
+	}
+
+	.cCW {
+		-webkit-transform: rotate(-3deg);
+	}
+
+	// III - Be Accessible
+
+	.indent {
+		@include span-columns(11);
+		@include omega;
+	}
+
+	$door_width: 0.4em;
+	$door_height: 0.67em;
+
+	.frame {
+  	@include prefixer(perspective, 200, webkit ms o);
+  	position: relative;
+  	top: 0;
+  	display: block;
+  	margin: 0 !important;
+  	width: $door_width;
+  	height: $door_height;
+  	background: white;
+  	box-shadow: inset 0 0 0 3px $gray;
+  	-webkit-perspective: 50;
+  	.door {
+			@include transition (all 0.75s ease);
+    	@include prefixer(transform, rotateY(), webkit ms o);
+    	position: absolute;
+  		display: block;
+    	width: $door_width;
+    	height: 100%;
+    	background: $gray;
+    	&#left {
+    		@include prefixer(transform-origin, top left, webkit ms o);
+      	left: 0;
+    	}
+  	}
+  }
+
+	// IV - Homerun
+
+	.baseball {
+		position: relative;
+		top: -0.05em;
+		font-size: 75%;
+	}
+
+  #default {
+  	top: 0.15em;
+  	position: relative;
+		background: $background;
+		line-height: 1em;
+		height: 0.8em;
+		margin: 0 0.2em;
+		box-shadow: inset 0 0 0 3px $gray;
+		font-family: $helvetica;
+		text-align: center;
+		&:before {
+			position: absolute;
+			right: -1.6em;
+			margin-right: 4px;
+			width: 1.6em;
+			height: 1.6em;
+			background: $background;
+			box-shadow: inset 0 0 0 3px $gray;
+			content: "▾";
+			font-size: 50%;
+			line-height: 1.6em;
+
+		}
+		&:after {
+			position: relative;
+			top: -0.55em;
+			padding: 0 1em;
+			content: "DEFAULT";
+			font-size: 50%;
+		}
+	}
+
+	#no {
+		position: relative;
+		line-height: 1em;
+		height: 0.7em;
+		width: 0.7em;
+		border-radius: 50%;
+		margin: 0 0.25em 0 0;
+		box-shadow: inset 0 0 0 3px $gray;
+		&:after {
+			@include transform(rotate(-45deg));
+			position: relative;
+			top: 50%;
+			left: 1px;
+			display: block;
+			margin: -2px 0 0 0;
+			width: 0.65em;
+			height: 3px;
+			background: $gray;
+			content: "";
+		}
+	}
+
+	// V - Productivity Tool
+
+	.icon-checked {
+  	position: relative;
+  	top: 0.55em;
+  	display: inline-block;
+  	float: right;
+		width: 1em;
+		line-height: 0;
+  }
+
+  // Footer
+
+  footer {
+		background: $dark-gray;
+		color: darken($light-gray, 20%) ;
+		section {
+			padding-top: 2em !important;
+			.container {
+				font-family: $sans;
+				text-transform: none;
+				font-size: modular-scale($base, -1, $scale);
+			}
+		}
+	}
+
+/* ------------------------ *\
+	State
+\* ------------------------ */
+
+	// Scroll Effects
+
+	.container.one.active {
+		.sans {
+			@extend .fadeInDown;
+		}
+		.hand {
+			@include animation-delay(1s);
+			@extend .fadeIn;
+		}
+		.section-break {
+			i {
+				@include animation-delay(2s);
+				@extend .bounceIn;
+			}
+			hr {
+				@include animation-delay(2s);
+				@extend .fadeIn;
+			}
+		}
+	}
+
+	.container.two.active {
+		.hand {
+			@extend .fadeInLeft;
+		}
+		.a {
+			@include animation-delay(1s);
+			@extend .fadeIn;
+		}
+		.b {
+			@include animation-delay(1.25s);
+			@extend .fadeIn;
+		}
+		.c {
+			@include animation-delay(1.75s);
+			@extend .fadeIn;
+		}
+		.d {
+			@include animation-delay(2s);
+			@extend .fadeIn;
+		}
+	}
+
+	.container.three.active {
+		.sans {
+			@extend .fadeIn;
+		}
+		.frame {
+			@extend .bounceInDown;
+			@include animation-delay(0.5s);
+			opacity: 1;
+			.door {
+				@include prefixer(transform, rotateY(75deg), webkit ms o);
+				@include transition-delay(1.5s);
+			}
+		}
+		.accessible {
+			@extend .fadeInLeft;
+			@include animation-delay(1.75s);
+		}
+		.hand {
+			@include animation-delay(2.5s);
+			@extend .fadeIn;
+		}
+		.indent {
+			@include animation-delay(5s);
+			@extend .fadeIn;
+		}
+		.plus {
+			@include animation-delay(5s);
+			@extend .bounceIn;
+			opacity: 1;
+		}
+		.section-break {
+			i {
+				@include animation-delay(6s);
+				@extend .bounceIn;
+				opacity: 1;
+			}
+			hr {
+				@include animation-delay(6s);
+				@extend .fadeIn;
+			}
+		}
+	}
+
+	.container.four.active {
+		.a {
+			@extend .fadeIn;
+		}
+		.b {
+			@include animation-delay(1s);
+			@extend .fadeIn;
+		}
+		.sans {
+			@include animation-delay(2s);
+			@extend .fadeIn;
+		}
+		.baseball {
+			@include animation-delay(2s);
+			@extend .rollIn;
+		}
+		.c {
+			@include animation-delay(3s);
+			@extend .fadeIn;
+		}
+		.section-break {
+			hr {
+				@include animation-delay(4s);
+				@extend .fadeIn;
+			}
+		}
+	}
+
+	.container.five.active {
+		.hand {
+			@extend .fadeIn;
+		}
+		.sans {
+			@include animation-delay(2s);
+			@extend .fadeIn;
+		}
+		.icon-checked {
+			@include animation-delay(2.5s);
+			@extend .bounceIn;
+			opacity: 1;
+		}
+		.section-break {
+			hr {
+				@include animation-delay(3.5s);
+				@extend .fadeIn;
+			}
+		}
+	}
