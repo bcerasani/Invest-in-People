@@ -5,17 +5,6 @@
 @import "animate";
 @import "fonts";
 
-/* ------------------------------------------------ *\
-
-	# SMACSS
-	1. Base
-	2. Layout
-	3. Module
-	4. State
-	5. Theme
-
-\* ------------------------------------------------ */
-
 /* ------------------------ *\
 	Base
 \* ------------------------ */
@@ -54,9 +43,6 @@
 		padding: 2em 0;
 		&:first-child {
 			padding-top: 4em;
-		}
-		&:last-child {
-			margin-top: 4em;
 		}
 		&:nth-child(2n) {
 			background: darken($background, 2%);
@@ -348,7 +334,7 @@
 
   footer {
 		background: $dark-gray;
-		color: darken($light-gray, 20%) ;
+		color: darken($light-gray, 20%);
 		section {
 			padding-top: 2em !important;
 			.container {
@@ -370,16 +356,16 @@
 			@extend .fadeInDown;
 		}
 		.hand {
-			@include animation-delay(1s);
+			@include animation-delay(0.5s);
 			@extend .fadeIn;
 		}
 		.section-break {
 			i {
-				@include animation-delay(2s);
+				@include animation-delay(1s);
 				@extend .bounceIn;
 			}
 			hr {
-				@include animation-delay(2s);
+				@include animation-delay(1s);
 				@extend .fadeIn;
 			}
 		}
@@ -390,19 +376,19 @@
 			@extend .fadeInLeft;
 		}
 		.a {
-			@include animation-delay(1s);
+			@include animation-delay(0.5s);
 			@extend .fadeIn;
 		}
 		.b {
-			@include animation-delay(1.25s);
+			@include animation-delay(0.5s);
 			@extend .fadeIn;
 		}
 		.c {
-			@include animation-delay(1.75s);
+			@include animation-delay(0.75s);
 			@extend .fadeIn;
 		}
 		.d {
-			@include animation-delay(2s);
+			@include animation-delay(1s);
 			@extend .fadeIn;
 		}
 	}
@@ -413,38 +399,38 @@
 		}
 		.frame {
 			@extend .bounceInDown;
-			@include animation-delay(0.5s);
+			@include animation-delay(0.25s);
 			opacity: 1;
 			.door {
 				@include prefixer(transform, rotateY(75deg), webkit ms o);
-				@include transition-delay(1.5s);
+				@include transition-delay(0.75s);
 			}
 		}
 		.accessible {
 			@extend .fadeInLeft;
-			@include animation-delay(1.75s);
+			@include animation-delay(1s);
 		}
 		.hand {
-			@include animation-delay(2.5s);
+			@include animation-delay(1.5s);
 			@extend .fadeIn;
 		}
 		.indent {
-			@include animation-delay(5s);
+			@include animation-delay(2s);
 			@extend .fadeIn;
 		}
 		.plus {
-			@include animation-delay(5s);
+			@include animation-delay(2s);
 			@extend .bounceIn;
 			opacity: 1;
 		}
 		.section-break {
 			i {
-				@include animation-delay(6s);
+				@include animation-delay(2.5s);
 				@extend .bounceIn;
 				opacity: 1;
 			}
 			hr {
-				@include animation-delay(6s);
+				@include animation-delay(2.5s);
 				@extend .fadeIn;
 			}
 		}
@@ -455,24 +441,24 @@
 			@extend .fadeIn;
 		}
 		.b {
-			@include animation-delay(1s);
+			@include animation-delay(0.75s);
 			@extend .fadeIn;
 		}
 		.sans {
-			@include animation-delay(2s);
+			@include animation-delay(1.5s);
 			@extend .fadeIn;
 		}
 		.baseball {
-			@include animation-delay(2s);
+			@include animation-delay(1.75s);
 			@extend .rollIn;
 		}
 		.c {
-			@include animation-delay(3s);
+			@include animation-delay(2s);
 			@extend .fadeIn;
 		}
 		.section-break {
 			hr {
-				@include animation-delay(4s);
+				@include animation-delay(2.25s);
 				@extend .fadeIn;
 			}
 		}
@@ -483,17 +469,17 @@
 			@extend .fadeIn;
 		}
 		.sans {
-			@include animation-delay(2s);
+			@include animation-delay(1s);
 			@extend .fadeIn;
 		}
 		.icon-checked {
-			@include animation-delay(2.5s);
+			@include animation-delay(1.5s);
 			@extend .bounceIn;
 			opacity: 1;
 		}
 		.section-break {
 			hr {
-				@include animation-delay(3.5s);
+				@include animation-delay(2s);
 				@extend .fadeIn;
 			}
 		}
